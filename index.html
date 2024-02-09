@@ -9,10 +9,10 @@
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <style>
-        /* Estilos personalizados */
+        /* Estilos personalizados mejorados */
         .switch-toggle {
             display: inline-flex;
-            border: 1px solid #d1d1d1;
+            border: 2px solid #ccc;
             border-radius: 20px;
             overflow: hidden;
         }
@@ -21,8 +21,7 @@
             flex: 1;
             padding: 10px 20px;
             cursor: pointer;
-            background-color: #e9e9e9; /* Color de fondo predeterminado */
-            color: #444;
+            color: #fff;
             text-align: center;
             transition: background-color 0.3s;
         }
@@ -73,8 +72,14 @@
         $(document).ready(function() {
             $('.mostrar-valor').change(function() {
                 var selectedButton = $('input[name=view]:checked').attr('id');
-                $('.switch-toggle label').css('background-color', '#8e8e93'); // Restablecer todos los botones a gris
-                $('#' + selectedButton).next('label').css('background-color', ''); // Restablecer el botón seleccionado a su color predeterminado
+                
+                // Restablecer todos los botones a gris
+                $('.switch-toggle label').css('background-color', '#8e8e93');
+                
+                // Resaltar el botón seleccionado
+                $('#' + selectedButton).next('label').css('background-color', '');
+                
+                // Actualizar el texto del estado seleccionado
                 $('#console-event').html('Estado: ' + $('input[name=view]:checked').val());
             });
         });
