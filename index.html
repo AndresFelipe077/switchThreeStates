@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Switch</title>
+    <!-- Toggle-switch -->
+    <link href="http://ghinda.net/css-toggle-switch/dist/toggle-switch.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        /* Estilos personalizados */
+        .switch-toggle {
+            display: inline-flex;
+            border: 1px solid #d1d1d1;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .switch-toggle label {
+            flex: 1;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #e9e9e9; /* Color de fondo predeterminado */
+            color: #444;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .switch-toggle #rejected + label {
+            background-color: #ff3b30; /* Rojo */
+        }
+
+        .switch-toggle #pending + label {
+            background-color: #8e8e93; /* Gris */
+        }
+
+        .switch-toggle #approved + label {
+            background-color: #34c759; /* Verde */
+        }
+
+        #console-event {
+            margin-top: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            text-align: center;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <fieldset>
+        <legend>Checks de tres estados</legend>
+        <div class="switch-toggle switch-candy">
+            <!-- Cambiando los valores y etiquetas -->
+            <input id="rejected" name="view" type="radio" class="mostrar-valor" value="RECHAZADO">
+            <label for="rejected">RECHAZADO</label>
+
+            <input id="pending" name="view" type="radio" checked class="mostrar-valor" value="PENDIENTE">
+            <label for="pending">PENDIENTE</label>
+
+            <input id="approved" name="view" type="radio" class="mostrar-valor" value="APROBADO">
+            <label for="approved">APROBADO</label>
+
+            <a></a>
+        </div>
+    </fieldset>
+
+    <div id="console-event">Estado: PENDIENTE</div>
+
+    <script>
+        $(document).ready(function() {
+            $('.mostrar-valor').change(function() {
+                var selectedButton = $('input[name=view]:checked').attr('id');
+                $('.switch-toggle label').css('background-color', '#8e8e93'); // Restablecer todos los botones a gris
+                $('#' + selectedButton).next('label').css('background-color', ''); // Restablecer el botón seleccionado a su color predeterminado
+                $('#console-event').html('Estado: ' + $('input[name=view]:checked').val());
+            });
+        });
+    </script>
+</body>
+</html>
