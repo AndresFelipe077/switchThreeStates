@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style-switch.css">
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <h3>Selecciona una opción:</h3>
+    <div class="tri-state-toggle">
+
+        <button class="tri-state-toggle-button" id="toggle-button1">
+            Song
+        </button>
+
+        <button class="tri-state-toggle-button" id="toggle-button2">
+            Video
+        </button>
+
+        <button class="tri-state-toggle-button" id="toggle-button3">
+            Party
+        </button>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#toggle-button1").addClass("active");
+            $(".tri-state-toggle-button").click(function () {
+                $(".tri-state-toggle-button").removeClass("active");
+                var id = $(this).attr('id');
+                $("#" + id).addClass("active");
+            });
+        });
+    </script>
+
+</body>
+
+</html>
